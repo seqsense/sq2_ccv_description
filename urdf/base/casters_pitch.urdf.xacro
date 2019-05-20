@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/common.xacro"/>
+
+  <property name="casters_pitch_length" value="0.1179"/>
+  <property name="casters_pitch_width" value="0.1700"/>
+  <property name="casters_pitch_height" value="0.1000"/>
+  <property name="casters_pitch_mass" value="1.0"/>
+
+  <xacro:macro name="casters_pitch" params="prefix parent *joint_origin *joint_axis">
+    <joint name="${prefix}_casters_pitch_joint" type="continuous">
+      <insert_block name="joint_origin"/>
+      <parent link="${parent}"/>
+      <child link="${prefix}_casters_pitch_link"/>
+      <insert_block name="joint_axis"/>
+      <limit velocity="30" effort="23"/>
+    </joint>
+
+    <link name="${prefix}_casters_pitch_link">
+      <visual>
+		<origin xyz="0.03095 0 -0.002" rpy="0 0 0"/>
+        <geometry>
+    	  <box size="${casters_pitch_length} ${casters_pitch_width} ${casters_pitch_height}"/>
+        </geometry>
+      </visual>
+      <collision>
+		<origin xyz="0.03095 0 -0.002" rpy="0 0 0"/>
+        <geometry>
+    	  <box size="${casters_pitch_length} ${casters_pitch_width} ${casters_pitch_height}"/>
+        </geometry>
+      </collision>
+      <inertial>
+		<origin xyz="0.03095 0 -0.002" rpy="0 0 0"/>
+        <mass value="5"/>
+        <inertia ixx="1" ixy="0" ixz="0" iyz="0" iyy="1" izz="1"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="casters_pitch_gazebo" params="prefix">
+    <gazebo reference="${prefix}_casters_pitch_link">
+      <selfCollide>false</selfCollide>
+      <mu1 value="0.8"/>
+      <mu2 value="0.8"/>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:macro name="casters_pitch_trans" params="prefix">
+    <transmission name="${prefix}_casters_pitch_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}_casters_pitch_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}_casters_pitch_motor">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>30</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+</robot>

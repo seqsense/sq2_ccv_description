@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+
+<robot name="sq2_ccv_description" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/base/base2body.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/base/casters_pitch.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/base/pitch2shaft.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/wheel/wheel.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/steering/steering.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/caster/caster.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/base/battery_box.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/base/upper_body.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/base/lidar_pillar.urdf.xacro"/>
+
+  <!-- Link & Joint -->
+  <link name="base_footprint"/>
+
+  <xacro:base parent="base_footprint">
+    <origin xyz="0 0 0"/>
+  </xacro:base>
+
+  <xacro:base2body parent="base_link">
+    <origin xyz="0 0 -0.011"/>
+  </xacro:base2body>
+
+  <xacro:steering prefix="right" parent="base_link">
+    <origin xyz="0 -0.2245 0.044" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </xacro:steering>
+
+  <xacro:wheel prefix="right" parent="right_steering_link">
+    <origin xyz="0 0 0.0275" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </xacro:wheel>
+
+  <xacro:steering prefix="left" parent="base_link">
+    <origin xyz="0 0.2245 0.044" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+  </xacro:steering>
+
+  <xacro:wheel prefix="left" parent="left_steering_link">
+    <origin xyz="0 0 0.0275" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </xacro:wheel>
+
+  <xacro:casters_pitch prefix="front" parent="base2body_link">
+    <origin xyz="0.1125 0 0.048" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </xacro:casters_pitch>
+
+  <xacro:casters_pitch prefix="back" parent="base2body_link">
+	<origin xyz="-0.1125 0 0.048" rpy="0 0 ${M_PI}"/>
+    <axis xyz="0 1 0"/>
+  </xacro:casters_pitch>
+
+  <xacro:pitch2shaft prefix="front" parent="front_casters_pitch_link">
+    <origin xyz="0.0904 0 -0.030"/>
+	<axis xyz="1 0 0"/>
+  </xacro:pitch2shaft>
+
+  <xacro:pitch2shaft prefix="back" parent="back_casters_pitch_link">
+    <origin xyz="0.0904 0 -0.030"/>
+	<axis xyz="1 0 0"/>
+  </xacro:pitch2shaft>
+
+  <xacro:caster prefix="front_right" parent="front_pitch2shaft_link">
+    <origin xyz="0.035 -0.167 -0.010" rpy="0 0 0"/>
+  </xacro:caster>
+
+  <xacro:caster prefix="front_left" parent="front_pitch2shaft_link">
+    <origin xyz="0.035 0.167 -0.010" rpy="0 0 0"/>
+  </xacro:caster>
+
+  <xacro:caster prefix="back_right" parent="back_pitch2shaft_link">
+    <origin xyz="0.035 -0.167 -0.010" rpy="0 0 0"/>
+  </xacro:caster>
+
+  <xacro:caster prefix="back_left" parent="back_pitch2shaft_link">
+    <origin xyz="0.035 0.167 -0.010" rpy="0 0 0"/>
+  </xacro:caster>
+
+  <xacro:battery_box parent="base2body_link">
+    <origin xyz="0 0 0.028" rpy="0 0 0"/>
+    <axis xyz="1 0 0"/>
+  </xacro:battery_box>
+
+  <xacro:upper_body parent="battery_box_link">
+    <origin xyz="0 0 0.823" rpy="0 0 0"/>
+  </xacro:upper_body>
+
+  <xacro:lidar_pillar parent="upper_body_link">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:lidar_pillar>
+
+  <!-- Transmission -->
+  <xacro:wheel_trans prefix="right"/>
+  <xacro:wheel_trans prefix="left"/>
+  <xacro:steering_trans prefix="right"/>
+  <xacro:steering_trans prefix="left"/>
+  <xacro:casters_pitch_trans prefix="front"/>
+  <xacro:casters_pitch_trans prefix="back"/>
+  <xacro:pitch2shaft_trans prefix="front"/>
+  <xacro:pitch2shaft_trans prefix="back"/>
+  <xacro:battery_box_trans/>
+
+  <!-- Gazebo -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/sq2_ccv</robotNamespace>
+    </plugin>
+  </gazebo>
+  <xacro:base_gazebo/>
+  <xacro:wheel_gazebo prefix="right"/>
+  <xacro:wheel_gazebo prefix="left"/>
+
+</robot>
