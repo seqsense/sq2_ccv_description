@@ -47,3 +47,38 @@ sq2_ccv:
         has_acceleration_limits: true
         max_acceleration       : 1.0  # rad/s^2
         min_acceleration       : -1.0
+
+  battery_box_joint:
+    type: position_controllers/JointPositionController
+    joint: battery_box_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  right_steering_joint:
+    type: position_controllers/JointPositionController
+    joint: right_steering_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  left_steering_joint:
+    type: position_controllers/JointPositionController
+    joint: left_steering_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  front_casters_pitch_joint:
+    type: position_controllers/JointPositionController
+    joint: front_casters_pitch_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  back_casters_pitch_joint:
+    type: position_controllers/JointPositionController
+    joint: back_casters_pitch_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  front_pitch2shaft_joint:
+    type: position_controllers/JointPositionController
+    joint: front_pitch2shaft_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  back_pitch2shaft_joint:
+    type: position_controllers/JointPositionController
+    joint: back_pitch2shaft_joint
+    pid: {p: 1.0, i: 0.0, d: 0.0}
