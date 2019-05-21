@@ -28,6 +28,7 @@
         </geometry>
       </collision>
       <inertial>
+		<origin xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
 		<cylinder_inertial mass="${caster_mass}" radius="${caster_radius}" length="${caster_width}"/>
       </inertial>
     </link>
@@ -41,4 +42,4 @@
     </gazebo>
   </xacro:macro>
 
-  </robot>
+</robot>

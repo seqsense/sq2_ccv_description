@@ -14,8 +14,8 @@ sq2_ccv:
     # Wheel separation and diameter. These are both optional.
     # diff_drive_controller will attempt to read either one or both from the
     # URDF if not specified as a parameter
-    wheel_separation : 0.4
-    wheel_radius : 0.125
+    wheel_separation : 0.55
+    wheel_radius : 0.1435
 
     # Wheel separation and radius multipliers
     wheel_separation_multiplier: 1.0 # default: 1.0
@@ -34,16 +34,16 @@ sq2_ccv:
     linear:
       x:
         has_velocity_limits    : true
-        max_velocity           : 3.0  # m/s
-        min_velocity           : -3.0 # m/s
+        max_velocity           : 1.0  # m/s
+        min_velocity           : -1.0 # m/s
         has_acceleration_limits: true
-        max_acceleration       : 5.0  # m/s^2
-        min_acceleration       : -5.0 # m/s^2
+        max_acceleration       : 1.0  # m/s^2
+        min_acceleration       : -1.0 # m/s^2
     angular:
       z:
         has_velocity_limits    : true
-        max_velocity           : 10.0  # rad/s
-        min_velocity           : -10.0
+        max_velocity           : 1.0  # rad/s
+        min_velocity           : -1.0
         has_acceleration_limits: true
-        max_acceleration       : 5.0  # rad/s^2
-        min_acceleration       : -5.0
+        max_acceleration       : 1.0  # rad/s^2
+        min_acceleration       : -1.0

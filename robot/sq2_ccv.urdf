@@ -111,7 +111,21 @@
     </plugin>
   </gazebo>
   <xacro:base_gazebo/>
+  <xacro:base2body_gazebo/>
+  <xacro:battery_box_gazebo/>
+  <xacro:upper_body_gazebo/>
+  <xacro:lidar_pillar_gazebo/>
+  <xacro:steering_gazebo prefix="right"/>
+  <xacro:steering_gazebo prefix="left"/>
   <xacro:wheel_gazebo prefix="right"/>
   <xacro:wheel_gazebo prefix="left"/>
+  <xacro:casters_pitch_gazebo prefix="front"/>
+  <xacro:casters_pitch_gazebo prefix="back"/>
+  <xacro:pitch2shaft_gazebo prefix="front"/>
+  <xacro:pitch2shaft_gazebo prefix="back"/>
+  <xacro:caster_gazebo prefix="front_right"/>
+  <xacro:caster_gazebo prefix="front_left"/>
+  <xacro:caster_gazebo prefix="back_right"/>
+  <xacro:caster_gazebo prefix="back_left"/>
 
 </robot>
