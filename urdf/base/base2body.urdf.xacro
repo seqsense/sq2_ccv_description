@@ -3,6 +3,12 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find sq2_ccv_description)/urdf/common.xacro"/>
+
+  <property name="base2body_length" value="0.319"/>
+  <property name="base2body_width" value="0.125"/>
+  <property name="base2body_height" value="0.090"/>
+  <property name="base2body_mass" value="5.0"/>
+
   <xacro:macro name="base2body" params="parent *joint_origin">
     <joint name="base2body_link_joint" type="fixed">
       <insert_block name="joint_origin"/>
@@ -14,19 +20,18 @@
       <visual>
         <origin xyz="0.0 0.0 0.045" rpy="0 0 0"/>
         <geometry>
-          <box size="0.319 0.125 0.090"/>
+	      <box size="${base2body_length} ${base2body_width} ${base2body_height}"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0.0 0.0 0.045" rpy="0 0 0"/>
         <geometry>
-          <box size="0.319 0.125 0.090"/>
+	      <box size="${base2body_length} ${base2body_width} ${base2body_height}"/>
         </geometry>
       </collision>
       <inertial>
-        <origin xyz="0.0 0.0 0.022" rpy="0 0 0"/>
-        <mass value="5"/>
-        <inertia ixx="1" ixy="0" ixz="0" iyz="0" iyy="1" izz="1"/>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+		<box_inertial mass="${base2body_mass}" depth="${base2body_length}" width="${base2body_width}" height="${base2body_height}"/>
       </inertial>
     </link>
 

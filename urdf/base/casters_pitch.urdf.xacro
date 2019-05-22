@@ -34,6 +34,7 @@
 		<origin xyz="0.03095 0 -0.002" rpy="0 0 0"/>
         <mass value="5"/>
         <inertia ixx="1" ixy="0" ixz="0" iyz="0" iyy="1" izz="1"/>
+		<box_inertial mass="${casters_pitch_mass}" height="${casters_pitch_mass}" width="${casters_pitch_width}" depth="${casters_pitch_length}"/>
       </inertial>
     </link>
   </xacro:macro>
