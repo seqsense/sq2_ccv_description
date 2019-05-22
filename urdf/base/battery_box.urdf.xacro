@@ -10,11 +10,11 @@
   <property name="battery_box_mass" value="20.0"/>
 
   <xacro:macro name="battery_box" params="parent *joint_origin *joint_axis">
-    <joint name="battery_box_joint" type="continuous">
+    <joint name="battery_box_joint" type="revolute">
       <insert_block name="joint_origin"/>
       <parent link="${parent}"/>
       <insert_block name="joint_axis"/>
-      <limit velocity="30" effort="23"/>
+	  <limit velocity="1" effort="1000" lower="${-M_PI/6}" upper="${M_PI/6}"/>
 	  <child link="battery_box_link"/>
     </joint>
 
@@ -51,10 +51,10 @@
     <transmission name="battery_box_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="battery_box_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="battery_box_motor">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>30</mechanicalReduction>
       </actuator>
     </transmission>

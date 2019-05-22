@@ -9,12 +9,12 @@
   <property name="casters_pitch_mass" value="1.0"/>
 
   <xacro:macro name="casters_pitch" params="prefix parent *joint_origin *joint_axis">
-    <joint name="${prefix}_casters_pitch_joint" type="continuous">
+    <joint name="${prefix}_casters_pitch_joint" type="revolute">
       <insert_block name="joint_origin"/>
       <parent link="${parent}"/>
       <child link="${prefix}_casters_pitch_link"/>
       <insert_block name="joint_axis"/>
-      <limit velocity="30" effort="23"/>
+      <limit velocity="6.28" effort="28" lower="-0.3" upeer="0.3"/>
     </joint>
 
     <link name="${prefix}_casters_pitch_link">
@@ -51,10 +51,10 @@
     <transmission name="${prefix}_casters_pitch_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}_casters_pitch_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="${prefix}_casters_pitch_motor">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>30</mechanicalReduction>
       </actuator>
     </transmission>

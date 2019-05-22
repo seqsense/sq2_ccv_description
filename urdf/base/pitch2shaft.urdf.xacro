@@ -10,11 +10,11 @@
   <property name="pitch2shaft_mass" value="1.0"/>
 
   <xacro:macro name="pitch2shaft" params="prefix parent *joint_origin *joint_axis">
-    <joint name="${prefix}_pitch2shaft_joint" type="continuous">
+    <joint name="${prefix}_pitch2shaft_joint" type="revolute">
       <insert_block name="joint_origin"/>
       <parent link="${parent}"/>
       <insert_block name="joint_axis"/>
-      <limit velocity="30" effort="23"/>
+      <limit velocity="6.28" effort="28" lower="-0.5" upper="0.5"/>
 	  <child link="${prefix}_pitch2shaft_link"/>
     </joint>
 
@@ -51,10 +51,10 @@
     <transmission name="${prefix}_pitch2shaft_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}_pitch2shaft_joint">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       </joint>
       <actuator name="${prefix}_pitch2shaft_motor">
-        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>30</mechanicalReduction>
       </actuator>
     </transmission>
