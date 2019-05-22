@@ -14,7 +14,7 @@
       <parent link="${parent}"/>
       <child link="${prefix}_casters_pitch_link"/>
       <insert_block name="joint_axis"/>
-      <limit velocity="6.28" effort="28" lower="-0.3" upeer="0.3"/>
+      <limit velocity="6.28" effort="28" lower="-0.3" upper="0.3"/>
     </joint>
 
     <link name="${prefix}_casters_pitch_link">
