@@ -12,6 +12,7 @@
   <xacro:include filename="$(find sq2_ccv_description)/urdf/base/battery_box.urdf.xacro"/>
   <xacro:include filename="$(find sq2_ccv_description)/urdf/base/upper_body.urdf.xacro"/>
   <xacro:include filename="$(find sq2_ccv_description)/urdf/base/lidar_pillar.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/sensors/wide_fov_3d_lidar.urdf.xacro"/>
 
   <!-- Link & Joint -->
   <link name="base_footprint"/>
@@ -92,6 +93,10 @@
   <xacro:lidar_pillar parent="upper_body_link">
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </xacro:lidar_pillar>
+
+  <xacro:wide_fov_3d_lidar parent="lidar_pillar_link">
+    <origin xyz="0 0 0.2422" rpy="0 0 0 "/>
+  </xacro:wide_fov_3d_lidar>
 
   <!-- Transmission -->
   <xacro:wheel_trans prefix="right"/>
