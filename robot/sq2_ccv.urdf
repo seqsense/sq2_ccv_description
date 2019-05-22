@@ -55,29 +55,29 @@
   </xacro:casters_pitch>
 
   <xacro:pitch2shaft prefix="front" parent="front_casters_pitch_link">
-    <origin xyz="0.0904 0 -0.030"/>
+    <origin xyz="0.0899 0 -0.030"/>
 	<axis xyz="1 0 0"/>
   </xacro:pitch2shaft>
 
   <xacro:pitch2shaft prefix="back" parent="back_casters_pitch_link">
-    <origin xyz="0.0904 0 -0.030"/>
+    <origin xyz="0.0899 0 -0.030"/>
 	<axis xyz="1 0 0"/>
   </xacro:pitch2shaft>
 
   <xacro:caster prefix="front_right" parent="front_pitch2shaft_link">
-    <origin xyz="0.035 -0.167 -0.010" rpy="0 0 0"/>
+    <origin xyz="0.043 -0.167 -0.010" rpy="0 0 0"/>
   </xacro:caster>
 
   <xacro:caster prefix="front_left" parent="front_pitch2shaft_link">
-    <origin xyz="0.035 0.167 -0.010" rpy="0 0 0"/>
+    <origin xyz="0.043 0.167 -0.010" rpy="0 0 0"/>
   </xacro:caster>
 
   <xacro:caster prefix="back_right" parent="back_pitch2shaft_link">
-    <origin xyz="0.035 -0.167 -0.010" rpy="0 0 0"/>
+    <origin xyz="0.043 -0.167 -0.010" rpy="0 0 0"/>
   </xacro:caster>
 
   <xacro:caster prefix="back_left" parent="back_pitch2shaft_link">
-    <origin xyz="0.035 0.167 -0.010" rpy="0 0 0"/>
+    <origin xyz="0.043 0.167 -0.010" rpy="0 0 0"/>
   </xacro:caster>
 
   <xacro:battery_box parent="base2body_link">
