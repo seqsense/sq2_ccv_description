@@ -108,7 +108,7 @@
 	      <box_inertial mass="0.1" height="0.030" width="0.005" depth="0.075"/>
         </inertial>
 	  </link>
-	  <xacro:hokuyo parent="turntable2laser${prefix}_link" prefix="${prefix}" viz_ray="true">
+	  <xacro:hokuyo parent="turntable2laser${prefix}_link" prefix="${prefix}" viz_ray="false">
 	    <origin xyz="0.04865 0 0.02622" rpy="0 ${M_PI/3} 0"/>
       </xacro:hokuyo>
 	</xacro:macro>
