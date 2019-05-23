@@ -16,6 +16,7 @@ RUN apt install -y ros-melodic-gazebo-ros-control \
                        ros-melodic-ros-controllers \
                        ros-melodic-gazebo-ros-pkgs \
                        ros-melodic-ros-control \ 
+					   libignition-math4 \
     && rm -rf /var/lib/apt/lists/*
 
 # nvidia environment
@@ -44,8 +45,8 @@ ENV ROS_WORKSPACE=/root/catkin_ws
 
 RUN ln -sf /usr/include/eigen3/Eigen /usr/include/Eigen
 
-RUN apt update 
-RUN apt install -y x11-apps
+RUN apt update \
+    && apt install vim -y
 
 RUN apt clean \
     && rm -rf /var/lib/apt/lists/*
