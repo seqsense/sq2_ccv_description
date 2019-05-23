@@ -16,6 +16,7 @@
 	  back_casters_pitch_joint
 	  front_pitch2shaft_joint
 	  back_pitch2shaft_joint
+	  turn_table_joint
   "/>
 
   <!-- convert joint states to TF transforms for rviz, etc -->

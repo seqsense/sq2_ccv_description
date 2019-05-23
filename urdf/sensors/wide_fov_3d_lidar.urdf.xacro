@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+
+<robot name="wide_fov_3d_lidar" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/sensors/lrf.urdf.xacro"/>
+
+  <xacro:macro name="wide_fov_3d_lidar" params="parent *joint_origin">
+
+    <joint name="lidar_joint" type="fixed">
+      <xacro:insert_block name="joint_origin"/>
+      <parent link="${parent}"/>
+      <child link="centerlaser"/>
+    </joint>
+  
+    <link name="centerlaser">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.1175" length="0.003"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.1175" length="0.003"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <cylinder_inertial mass="0.3" radius="0.1175" length="0.003"/>
+      </inertial>
+    </link>
+
+    <joint name="motor_joint" type="fixed">
+      <origin xyz="0 0 -0.023" rpy="0 0 0"/>
+      <parent link="centerlaser"/>
+      <child link="lidar_motor"/>
+    </joint>
+  
+    <link name="lidar_motor">
+      <visual>
+        <origin xyz="0 0 0.02454" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.020" length="0.04908"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.02454" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.020" length="0.04908"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0.02454" rpy="0 0 0"/>
+        <cylinder_inertial mass="0.3" radius="0.020" length="0.04908"/>
+      </inertial>
+    </link>
+
+    <joint name="turn_table_joint" type="continuous">
+      <origin xyz="0 0 0.05108" rpy="0 0 0"/>
+      <parent link="lidar_motor"/>
+      <child link="turn_table"/>
+      <axis xyz="0 0 1"/>
+      <limit velocity="15" effort="15"/>
+    </joint>
+  
+    <link name="turn_table">
+      <visual>
+        <origin xyz="0 0 0.0015" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.065" length="0.003"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.0015" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.065" length="0.003"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0.0015" rpy="0 0 0"/>
+        <cylinder_inertial mass="0.3" radius="0.065" length="0.003"/>
+      </inertial>
+    </link>
+
+	<xacro:macro name="laser" params="parent prefix">
+      <joint name="turntable2laser${prefix}_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 ${2*M_PI*prefix/3}"/>
+        <parent link="${parent}"/>
+		<child link="turntable2laser${prefix}_link"/>
+	  </joint>
+	  <link name="turntable2laser${prefix}_link">
+        <visual>
+          <origin xyz="0.0375 0 0.015"/>
+          <geometry>
+	        <box size="0.075 0.005 0.030"/>
+          </geometry>
+        </visual>
+        <collision>
+          <origin xyz="0.0375 0 0.015"/>
+          <geometry>
+	        <box size="0.075 0.005 0.030"/>
+          </geometry>
+        </collision>
+        <inertial>
+          <origin xyz="0.0375 0 0.015"/>
+	      <box_inertial mass="0.1" height="0.030" width="0.005" depth="0.075"/>
+        </inertial>
+	  </link>
+	  <xacro:hokuyo parent="turntable2laser${prefix}_link" prefix="${prefix}">
+	    <origin xyz="0.04865 0 0.02622" rpy="0 ${M_PI/3} 0"/>
+      </xacro:hokuyo>
+	</xacro:macro>
+	<xacro:laser parent="turn_table" prefix="1"/>
+	<xacro:laser parent="turn_table" prefix="2"/>
+	<xacro:laser parent="turn_table" prefix="3"/>
+
+    <gazebo reference="centerlaser">
+      <selfCollide>false</selfCollide>
+      <mu1 value="0.05"/>
+      <mu2 value="0.05"/>
+    </gazebo>
+    <gazebo reference="lidar_motor">
+      <selfCollide>false</selfCollide>
+      <mu1 value="0.05"/>
+      <mu2 value="0.05"/>
+    </gazebo>
+    <gazebo reference="turn_table">
+      <selfCollide>false</selfCollide>
+      <mu1 value="0.05"/>
+      <mu2 value="0.05"/>
+    </gazebo>
+
+    <transmission name="_wide_fov_3d_lidar_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="turn_table_joint">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="turn_table_motor">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <mechanicalReduction>30</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+</robot>

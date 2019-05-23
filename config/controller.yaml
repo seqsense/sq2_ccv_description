@@ -82,3 +82,8 @@ sq2_ccv:
     type: effort_controllers/JointPositionController
     joint: back_pitch2shaft_joint
     pid: {p: 100.0, i: 0.1, d: 0.0}
+
+  turn_table_joint:
+    type: velocity_controllers/JointVelocityController
+    joint: turn_table_joint
+  pid: {p: 100.0, i: 0.1, d: 0.0}

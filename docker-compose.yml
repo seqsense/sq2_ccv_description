@@ -1,0 +1,17 @@
+version: '2'
+services:
+  master:
+    build: ./docker
+    volumes:
+      - ".:/root/catkin_ws/src/this_repository"
+      - "/etc/group:/etc/group:ro"
+      - "/etc/passwd:/etc/passwd:ro"
+      - "/etc/shadow:/etc/shadow:ro"
+      - "/etc/sudoers.d:/etc/sudoers.d:ro"
+      - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+    environment:
+      - QT_X11_NO_MITSHM=1
+      - DISPLAY=$DISPLAY
+    container_name: simulator 
+    network_mode: "host"
+    command: bash -c "cd catkin_ws && catkin_make && source devel/setup.bash && roslaunch sq2_ccv_description gazebo.launch " 
