@@ -4,48 +4,61 @@
 
   <xacro:include filename="$(find sq2_ccv_description)/urdf/common.xacro"/>
 
-  <xacro:macro name="hokuyo" params="parent *joint_origin name">
+  <xacro:macro name="hokuyo" params="parent *joint_origin prefix">
+	<property name="name" value="laser${prefix}"/>
+	<property name="hokuyo_depth" value="0.062"/>
+	<property name="hokuyo_width" value="0.062"/>
+	<property name="hokuyo_height" value="0.0875"/>
+	<property name="hokuyo_mass" value="0.3"/>
 
-    <joint name="${name}_joint" type="fixed">
+    <joint name="${name}_base_joint" type="fixed">
       <xacro:insert_block name="joint_origin"/>
       <parent link="${parent}"/>
-      <child link="${name}_link"/>
+      <child link="${name}_base_link"/>
     </joint>
 
-    <link name="${name}_link">
+    <link name="${name}_base_link">
       <visual>
-        <origin xyz="0 0 0"/>
+		<origin xyz="0 0 ${hokuyo_height/2}"/>
         <geometry>
-          <box size="0.062 0.062 0.0875"/>
+		  <box size="${hokuyo_depth} ${hokuyo_width} ${hokuyo_height}"/>
         </geometry>
       </visual>
 
       <collision>
-        <origin xyz="0 0 0"/>
+		<origin xyz="0 0 ${hokuyo_height/2}"/>
         <geometry>
-          <box size="0.062 0.062 0.0875"/>
+		  <box size="${hokuyo_depth} ${hokuyo_width} ${hokuyo_height}"/>
         </geometry>
       </collision>
 
       <inertial>
-        <origin xyz="0 0 0"/>
-        <box_inertial mass="0.3" height="0.0875" width="0.062" depth="0.062"/>
+		<origin xyz="0 0 ${hokuyo_height/2}"/>
+		<box_inertial mass="${hokuyo_mass}" height="${hokuyo_height}" width="${hokuyo_width}" depth="${hokuyo_depth}"/>
       </inertial>
 
     </link>
 
+	<joint name="${name}_joint" type="fixed">
+	  <origin xyz="0 0 0.0525"/>
+	  <parent link="${name}_base_link"/>
+	  <child link="${name}_link"/>
+	</joint>
+
+	<link name="${name}_link"/>
+
     <gazebo reference="${name}_link">
       <sensor type="ray" name="${name}_lrf_sensor">
         <pose>0 0 0 0 0 0</pose>
-        <visualize>false</visualize>
+        <visualize>true</visualize>
         <update_rate>100</update_rate>
         <ray>
           <scan>
             <horizontal>
               <samples>416</samples>
               <resolution>1</resolution>
-              <min_angle>-1.1780972450961724</min_angle>
-              <max_angle>1.1780972450961724</max_angle>
+              <min_angle>-2.356194490192345</min_angle>
+              <max_angle>2.356194490192345</max_angle>
             </horizontal>
           </scan>
           <range>
@@ -60,8 +73,8 @@
           </noise>
         </ray>
         <plugin name="gazebo_ros_${name}_lrf_controller" filename="libgazebo_ros_laser.so">
-          <topicName>/${name}_laser/scan</topicName>
-          <frameName>${name}_laser</frameName>
+		  <topicName>/scan${prefix}</topicName>
+          <frameName>${name}_link</frameName>
         </plugin>
       </sensor>
     </gazebo>
