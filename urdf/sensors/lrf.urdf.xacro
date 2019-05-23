@@ -4,7 +4,7 @@
 
   <xacro:include filename="$(find sq2_ccv_description)/urdf/common.xacro"/>
 
-  <xacro:macro name="hokuyo" params="parent *joint_origin prefix">
+  <xacro:macro name="hokuyo" params="parent *joint_origin prefix viz_ray=false">
 	<property name="name" value="laser${prefix}"/>
 	<property name="hokuyo_depth" value="0.062"/>
 	<property name="hokuyo_width" value="0.062"/>
@@ -50,7 +50,7 @@
     <gazebo reference="${name}_link">
       <sensor type="ray" name="${name}_lrf_sensor">
         <pose>0 0 0 0 0 0</pose>
-        <visualize>true</visualize>
+		<visualize>${viz_ray}</visualize>
         <update_rate>100</update_rate>
         <ray>
           <scan>
