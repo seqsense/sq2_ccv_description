@@ -7,6 +7,8 @@ sq2_ccv:
     type        : "diff_drive_steering_controller/DiffDriveSteeringController"
     left_wheel  : 'left_wheel_joint'
     right_wheel : 'right_wheel_joint'
+    left_steering  : 'left_steering_joint'
+    right_steering : 'right_steering_joint'
     publish_rate: 50
     pose_covariance_diagonal : [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
     twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
@@ -52,16 +54,6 @@ sq2_ccv:
     type: effort_controllers/JointPositionController
     joint: battery_box_joint
     pid: {p: 1000.0, i: 0.1, d: 100.0}
-
-  right_steering_joint:
-    type: effort_controllers/JointPositionController
-    joint: right_steering_joint
-    pid: {p: 100.0, i: 0.1, d: 10.0}
-
-  left_steering_joint:
-    type: effort_controllers/JointPositionController
-    joint: left_steering_joint
-    pid: {p: 100.0, i: 0.1, d: 10.0}
 
   front_casters_pitch_joint:
     type: effort_controllers/JointPositionController
