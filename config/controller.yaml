@@ -50,6 +50,8 @@ sq2_ccv:
         max_acceleration       : 1.0  # rad/s^2
         min_acceleration       : -1.0
 
+    steering_angle_absolute_value_limit: 0.5235987755982988 # M_PI/6 
+
   battery_box_joint:
     type: effort_controllers/JointPositionController
     joint: battery_box_joint
