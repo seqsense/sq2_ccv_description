@@ -36,8 +36,8 @@ sq2_ccv:
     linear:
       x:
         has_velocity_limits    : true
-        max_velocity           : 1.0  # m/s
-        min_velocity           : -1.0 # m/s
+        max_velocity           : 2.5  # m/s
+        min_velocity           : -2.5 # m/s
         has_acceleration_limits: true
         max_acceleration       : 1.0  # m/s^2
         min_acceleration       : -1.0 # m/s^2
@@ -55,9 +55,13 @@ sq2_ccv:
   roll_pitch_controller:
     type: "sq2_ccv_upper_body_controller/SQ2CCVUpperBodyController"
     roll_joint: 'battery_box_joint'
+    roll_axis_reversed: false 
     pitch_joint: 
       - 'front_casters_pitch_joint'
       - 'back_casters_pitch_joint'
+    pitch_axis_reversed:
+      - false
+      - true
     roll_angle_absolute_value_limit  : 0.5235987755982988 
     pitch_angle_absolute_value_limit : 0.5235987755982988 
 
