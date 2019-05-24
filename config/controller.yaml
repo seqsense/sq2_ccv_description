@@ -52,20 +52,14 @@ sq2_ccv:
 
     steering_angle_absolute_value_limit: 0.5235987755982988 # M_PI/6 
 
-  battery_box_joint:
-    type: effort_controllers/JointPositionController
-    joint: battery_box_joint
-    pid: {p: 1000.0, i: 0.1, d: 100.0}
-
-  front_casters_pitch_joint:
-    type: effort_controllers/JointPositionController
-    joint: front_casters_pitch_joint
-    pid: {p: 200.0, i: 0.01, d: 10.0}
-
-  back_casters_pitch_joint:
-    type: effort_controllers/JointPositionController
-    joint: back_casters_pitch_joint
-    pid: {p: 200.0, i: 0.01, d: 10.0}
+  roll_pitch_controller:
+    type: "sq2_ccv_upper_body_controller/SQ2CCVUpperBodyController"
+    roll_joint: 'battery_box_joint'
+    pitch_joint: 
+      - 'front_casters_pitch_joint'
+      - 'back_casters_pitch_joint'
+    roll_angle_absolute_value_limit  : 0.5235987755982988 
+    pitch_angle_absolute_value_limit : 0.5235987755982988 
 
   turn_table_joint:
     type: effort_controllers/JointVelocityController

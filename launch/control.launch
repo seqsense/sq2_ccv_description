@@ -9,9 +9,7 @@
     args="
       joint_state_controller
       diff_drive_steering_controller
-	  battery_box_joint
-	  front_casters_pitch_joint
-	  back_casters_pitch_joint
+	  roll_pitch_controller
 	  turn_table_joint
   "/>
 

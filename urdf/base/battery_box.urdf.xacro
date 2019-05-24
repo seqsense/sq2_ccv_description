@@ -51,10 +51,10 @@
     <transmission name="battery_box_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="battery_box_joint">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
       </joint>
       <actuator name="battery_box_motor">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         <mechanicalReduction>30</mechanicalReduction>
       </actuator>
     </transmission>
