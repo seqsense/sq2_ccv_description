@@ -3,8 +3,8 @@ sq2_ccv:
     type: joint_state_controller/JointStateController
     publish_rate: 50
 
-  diff_drive_controller:
-    type        : "diff_drive_controller/DiffDriveController"
+  diff_drive_steering_controller:
+    type        : "diff_drive_steering_controller/DiffDriveSteeringController"
     left_wheel  : 'left_wheel_joint'
     right_wheel : 'right_wheel_joint'
     publish_rate: 50

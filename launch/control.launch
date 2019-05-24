@@ -8,7 +8,7 @@
     type="spawner" ns="/sq2_ccv" output="screen"
     args="
       joint_state_controller
-      diff_drive_controller
+      diff_drive_steering_controller
 	  battery_box_joint
 	  right_steering_joint
 	  left_steering_joint
