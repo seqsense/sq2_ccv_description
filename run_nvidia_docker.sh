@@ -18,5 +18,5 @@ nvidia-docker run -it --rm \
   --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
   --net="host" \
   --volume="$SCRIPT_DIR/:/root/catkin_ws/src/sq2_ccv_description/" \
-  $IMAGE_NAME \
-  bash -c "cd /root/catkin_ws/src && git clone https://github.com/amslabtech/diff_drive_steering_controller -b devel && cd /root/catkin_ws && catkin_make && bash"
+  --volume="$SCRIPT_DIR/../diff_drive_steering_controller/:/root/catkin_ws/src/diff_drive_steering_controller/" \
+  $IMAGE_NAME 
