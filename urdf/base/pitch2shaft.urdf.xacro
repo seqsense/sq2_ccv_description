@@ -16,6 +16,7 @@
       <insert_block name="joint_axis"/>
       <limit velocity="6.28" effort="28" lower="-0.5" upper="0.5"/>
 	  <child link="${prefix}_pitch2shaft_link"/>
+	  <dynamics damping="0.001"/>
     </joint>
 
     <link name="${prefix}_pitch2shaft_link">

@@ -22,8 +22,8 @@
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
     args="-urdf -model sq2_ccv -param robot_description"/>
 
-  <node pkg="rostopic" type="rostopic" name="init_roll" args="pub /sq2_ccv/battery_box_joint/command std_msgs/Float64 'data: 0.0'"/>
-  <node pkg="rostopic" type="rostopic" name="init_left_steering" args="pub /sq2_ccv/left_steering/command std_msgs/Float64 'data: 0.0'"/>
-  <node pkg="rostopic" type="rostopic" name="init_right_steering" args="pub /sq2_ccv/right_steering/command std_msgs/Float64 'data: 0.0'"/>
+  <node pkg="rostopic" type="rostopic" name="init_roll" args="pub -1 /sq2_ccv/battery_box_joint/command std_msgs/Float64 'data: 0.0'"/>
+  <node pkg="rostopic" type="rostopic" name="init_left_steering" args="pub -1 /sq2_ccv/left_steering/command std_msgs/Float64 'data: 0.0'"/>
+  <node pkg="rostopic" type="rostopic" name="init_right_steering" args="pub -1 /sq2_ccv/right_steering/command std_msgs/Float64 'data: 0.0'"/>
 
 </launch>
