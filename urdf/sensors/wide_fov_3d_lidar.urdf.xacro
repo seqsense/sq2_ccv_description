@@ -132,7 +132,7 @@
       <mu2 value="0.05"/>
     </gazebo>
 
-    <transmission name="wide_fov_3d_lidar_trans">
+    <!--transmission name="wide_fov_3d_lidar_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="turn_table_joint">
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
@@ -141,7 +141,7 @@
         <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         <mechanicalReduction>30</mechanicalReduction>
       </actuator>
-    </transmission>
+    </transmission-->
   </xacro:macro>
 
 </robot>

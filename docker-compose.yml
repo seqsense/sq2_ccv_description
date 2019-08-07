@@ -1,9 +1,34 @@
-version: '2'
+# version: '2'
+# services:
+#   master:
+#     build: ./docker
+#     volumes:
+#       - ".:/root/catkin_ws/src/this_repository"
+#       - "/etc/group:/etc/group:ro"
+#       - "/etc/passwd:/etc/passwd:ro"
+#       - "/etc/shadow:/etc/shadow:ro"
+#       - "/etc/sudoers.d:/etc/sudoers.d:ro"
+#       - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+#     environment:
+#       - QT_X11_NO_MITSHM=1
+#       - DISPLAY=$DISPLAY
+#     container_name: simulator 
+#     network_mode: "host"
+#     command: bash -c "cd catkin_ws && catkin_make && source devel/setup.bash && roslaunch sq2_ccv_description gazebo.launch " 
+
+#####################################
+
+version: '3.5'
 services:
   master:
-    build: ./docker
+    build: #./docker
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        GITHUB_USER: $GITHUB_USER
+        GITHUB_TOKEN: $GITHUB_TOKEN
     volumes:
-      - ".:/root/catkin_ws/src/this_repository"
+      - $PWD/:/home/repo/
       - "/etc/group:/etc/group:ro"
       - "/etc/passwd:/etc/passwd:ro"
       - "/etc/shadow:/etc/shadow:ro"
@@ -14,4 +39,4 @@ services:
       - DISPLAY=$DISPLAY
     container_name: simulator 
     network_mode: "host"
-    command: bash -c "cd catkin_ws && catkin_make && source devel/setup.bash && roslaunch sq2_ccv_description gazebo.launch " 
+    command: bash -c "cd home/repo/ && source /opt/ros/crystal/setup.bash && colcon build && source install/setup.bash && source install/local_setup.bash && ros2 launch sq2_future_vision_description gazebo.launch"

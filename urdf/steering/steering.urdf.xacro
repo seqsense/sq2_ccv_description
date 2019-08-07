@@ -44,7 +44,7 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="steering_trans" params="prefix">
+  <!--xacro:macro name="steering_trans" params="prefix">
     <transmission name="${prefix}_steering_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}_steering_joint">
@@ -55,6 +55,6 @@
         <mechanicalReduction>30</mechanicalReduction>
       </actuator>
     </transmission>
-  </xacro:macro>
+  </xacro:macro-->
 
 </robot>

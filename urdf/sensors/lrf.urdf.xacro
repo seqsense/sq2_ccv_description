@@ -72,7 +72,7 @@
             <stddev>0.03</stddev>
           </noise>
         </ray>
-        <plugin name="gazebo_ros_${name}_lrf_controller" filename="libgazebo_ros_laser.so">
+        <!--plugin name="gazebo_ros_${name}_lrf_controller" filename="libgazebo_ros_laser.so"-->
 		  <topicName>/scan${prefix}</topicName>
           <frameName>${name}_link</frameName>
         </plugin>

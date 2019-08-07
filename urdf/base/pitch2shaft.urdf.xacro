@@ -48,7 +48,7 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="pitch2shaft_trans" params="prefix">
+  <!--xacro:macro name="pitch2shaft_trans" params="prefix">
     <transmission name="${prefix}_pitch2shaft_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}_pitch2shaft_joint">
@@ -59,6 +59,6 @@
         <mechanicalReduction>30</mechanicalReduction>
       </actuator>
     </transmission>
-  </xacro:macro>
+  </xacro:macro-->
 
 </robot>

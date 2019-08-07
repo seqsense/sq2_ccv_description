@@ -47,7 +47,7 @@
     </gazebo>
   </xacro:macro>
 
-  <xacro:macro name="battery_box_trans">
+  <!--xacro:macro name="battery_box_trans">
     <transmission name="battery_box_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="battery_box_joint">
@@ -58,6 +58,6 @@
         <mechanicalReduction>30</mechanicalReduction>
       </actuator>
     </transmission>
-  </xacro:macro>
+  </xacro:macro-->
 
 </robot>
