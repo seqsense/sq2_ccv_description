@@ -19,26 +19,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    keyboard_pub = launch_ros.actions.Node(
-        package='travel',
-        node_executable='keyboard_publisher',
-        output='screen',
-    )
-
-    obj_detect_pub = launch_ros.actions.Node(
-        package='travel',
-        node_executable='object_detection_publisher',
-        output='screen',
-    ) 
-
-    agent = launch_ros.actions.Node(
-        package='travel',
-        node_executable='agent',
-        output='screen',
-    )
-
-    paused = launch.
-
     return LaunchDescription([
         launch.actions.DeclareLaunchArgument(
           'world',
@@ -46,8 +26,4 @@ def generate_launch_description():
           description='Gazebo world file'),
         gzserver_exe,
         gzclient_exe,
-        keyboard_pub,
-        obj_detect_pub,
-        agent
-        #ローンチ時にプログラムを実行する
     ])
