@@ -1643,11 +1643,6 @@
             <stddev>0.03</stddev>
           </noise>
         </ray>
-        <plugin name='gazebo_ros_laser1_lrf_controller' filename='libgazebo_ros_laser.so'>
-          <topicName>/scan1</topicName>
-          <frameName>laser1_link</frameName>
-          <robotNamespace>/</robotNamespace>
-        </plugin>
         <pose frame=''>-0.047058 0.081507 0.05247 0 1.0472 2.0944</pose>
       </sensor>
       <velocity_decay/>
@@ -1679,11 +1674,6 @@
             <stddev>0.03</stddev>
           </noise>
         </ray>
-        <plugin name='gazebo_ros_laser2_lrf_controller' filename='libgazebo_ros_laser.so'>
-          <topicName>/scan2</topicName>
-          <frameName>laser2_link</frameName>
-          <robotNamespace>/</robotNamespace>
-        </plugin>
         <pose frame=''>-0.047058 -0.081507 0.05247 0 1.0472 -2.09439</pose>
       </sensor>
       <gravity>1</gravity>
@@ -1716,11 +1706,6 @@
             <stddev>0.03</stddev>
           </noise>
         </ray>
-        <plugin name='gazebo_ros_laser3_lrf_controller' filename='libgazebo_ros_laser.so'>
-          <topicName>/scan3</topicName>
-          <frameName>laser3_link</frameName>
-          <robotNamespace>/</robotNamespace>
-        </plugin>
         <pose frame=''>0.094116 0 0.05247 0 1.0472 0</pose>
       </sensor>
       <enable_wind>0</enable_wind>
@@ -2540,8 +2525,23 @@
     </joint>
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
-    <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
-      <robotNamespace>/sq2_ccv</robotNamespace>
+    <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+      <ros>
+        <namespace>/pos</namespace>
+        <argument>cmd_vel:=cmd_pos</argument>
+        <argument>odom:=odom_pos</argument>
+      </ros>
+      <left_joint>left_wheel_joint</left_joint>
+      <right_joint>right_wheel_joint</right_joint>
+      <wheel_separation>1.25</wheel_separation>
+      <wheel_diameter>0.14</wheel_diameter>
+      <max_wheel_torque>20</max_wheel_torque>
+      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <publish_odom>1</publish_odom>
+      <publish_odom_tf>1</publish_odom_tf>
+      <publish_wheel_tf>1</publish_wheel_tf>
+      <odometry_frame>odom_demo</odometry_frame>
+      <robot_base_frame>chassis</robot_base_frame>
     </plugin>
   </model>
 </sdf>
