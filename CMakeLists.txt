@@ -4,6 +4,10 @@ project(sq2_ccv_description)
 # find dependencies
 find_package(ament_cmake REQUIRED)
 
+install(DIRECTORY urdf
+  DESTINATION share/${PROJECT_NAME}/
+)
+
 install(DIRECTORY
   launch
   DESTINATION share/${PROJECT_NAME}/
@@ -11,6 +15,11 @@ install(DIRECTORY
 
 install(DIRECTORY
   worlds
+  DESTINATION share/${PROJECT_NAME}/
+)
+
+install(DIRECTORY
+  robot
   DESTINATION share/${PROJECT_NAME}/
 )
 

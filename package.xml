@@ -3,7 +3,7 @@
 <package format="2">
   <name>sq2_ccv_description</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Model description for sq2_ccv</description>
   <maintainer email="foo@bar.foo">foo</maintainer>
   <license>TODO: License declaration</license>
 
