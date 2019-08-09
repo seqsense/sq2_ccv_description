@@ -2,10 +2,15 @@ from launch import LaunchDescription
 import launch.actions
 import launch.substitutions
 import launch_ros.actions
+import os
+
+moidel = os.path.relpath
+
 
 def generate_launch_description():
+    # Don't forget to include "libgazebo_ros_factory.so" if using spawn command
     gzserver_exe = launch.actions.ExecuteProcess(
-        cmd=['gzserver', '--verbose', '-s', 'libgazebo_ros_factory.so', '-s', 'libgazebo_ros_init.so',
+        cmd=['gzserver', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so',
              launch.substitutions.LaunchConfiguration('world')],
         output='screen'
     )
@@ -15,9 +20,6 @@ def generate_launch_description():
         output='screen'
     )
 
-    spawn_ccv = launch_ros.actions.Node(package='sq2_ccv_manipulation', node_executable='spawn_ccv',
-             output='screen'),
-
     return LaunchDescription([
         launch.actions.DeclareLaunchArgument(
           'world',
@@ -25,5 +27,4 @@ def generate_launch_description():
           description='Gazebo world file'),
         gzserver_exe,
         gzclient_exe,
-        spawn_ccv,
     ])
