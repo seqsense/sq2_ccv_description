@@ -20,4 +20,5 @@ nvidia-docker run -it --rm \
   --volume="$SCRIPT_DIR/:/root/catkin_ws/src/sq2_ccv_description/" \
   --volume="$SCRIPT_DIR/../diff_drive_steering_controller/:/root/catkin_ws/src/diff_drive_steering_controller/" \
   --volume="$SCRIPT_DIR/../sq2_ccv_upper_body_controller/:/root/catkin_ws/src/sq2_ccv_upper_body_controller/" \
+  --volume="$SCRIPT_DIR/worlds/:/root/catkin_ws/src/worlds/" \
   $IMAGE_NAME 
