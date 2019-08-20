@@ -13,6 +13,7 @@
   <xacro:include filename="$(find sq2_ccv_description)/urdf/base/upper_body.urdf.xacro"/>
   <xacro:include filename="$(find sq2_ccv_description)/urdf/base/lidar_pillar.urdf.xacro"/>
   <xacro:include filename="$(find sq2_ccv_description)/urdf/sensors/wide_fov_3d_lidar.urdf.xacro"/>
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/sensors/camera.urdf.xacro"/>
 
   <!-- Link & Joint -->
   <link name="base_footprint"/>
@@ -24,6 +25,10 @@
   <xacro:base2body parent="base_link">
     <origin xyz="0 0 -0.011"/>
   </xacro:base2body>
+
+  <xacro:webcamera prefix="cam" parent="base_link">
+    <origin xyz="0 0 0.24"/>
+  </xacro:webcamera>
 
   <xacro:steering prefix="right" parent="base_link">
     <origin xyz="0 -0.2245 0.048" rpy="0 0 0"/>
@@ -132,5 +137,6 @@
   <xacro:caster_gazebo prefix="front_left"/>
   <xacro:caster_gazebo prefix="back_right"/>
   <xacro:caster_gazebo prefix="back_left"/>
+  <xacro:camera_gazebo prefix="cam"/>
 
 </robot>
