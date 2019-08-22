@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find sq2_ccv_description)/urdf/common.xacro"/>
+
+  <xacro:macro name="webcamera" params="prefix parent *joint_origin">
+
+      #To Do: write visual part
+
+  </xacro:macro>
+
+  <xacro:macro name="bumper_gazebo" params="prefix">
+    <gazebo reference="${prefix}_bumper">
+        <plugin name="${name}_gazebo_ros_bumper_controller" filename="libgazebo_ros_bumper.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>${update_rate}</updateRate>
+            <bumperTopicName>${name}_bumper</bumperTopicName>
+            <frameName>world</frameName>
+        </plugin>
+    </gazebo>
+  </xacro:macro>
+
+</robot>
