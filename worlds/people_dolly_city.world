@@ -4543,7 +4543,7 @@
         </ignore_obstacles>
       </plugin>
     </actor>
-
+<!-- 
     <actor name="actor2">
       <pose>15 2 1.25 1.57 0 0</pose>
       <skin>
@@ -4555,7 +4555,7 @@
         <scale>1.000000</scale>
         <interpolate_x>true</interpolate_x>
       </animation>
-<!-- 
+
       <plugin name="actor2_plugin" filename="libActorPlugin.so">
         <target>15 2 1.25</target>
         <target_weight>1.15</target_weight>
@@ -4721,7 +4721,7 @@
       </plugin>
     </actor>
 
-
+ <!--
     <actor name="actor5">
       <pose>30 3 1.25 1.57 0 0</pose>
       <skin>
@@ -4734,7 +4734,7 @@
         <interpolate_x>true</interpolate_x>
       </animation>
 
-      <!-- <plugin name="actor5_plugin" filename="libActorPlugin.so">
+      <plugin name="actor5_plugin" filename="libActorPlugin.so">
         <target>30 3 1.25</target>
         <target_weight>1.15</target_weight>
         <obstacle_weight>1.8</obstacle_weight>
