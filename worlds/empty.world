@@ -82,10 +82,10 @@
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
     <state world_name='default'>
-      <sim_time>51 481000000</sim_time>
-      <real_time>51 731253207</real_time>
-      <wall_time>1565944166 343634346</wall_time>
-      <iterations>51481</iterations>
+      <sim_time>0 0</sim_time>
+      <real_time>0 0</real_time>
+      <wall_time>1566958962 898746603</wall_time>
+      <iterations>0</iterations>
       <model name='ground_plane'>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>

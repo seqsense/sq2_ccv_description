@@ -14,7 +14,6 @@
   <xacro:include filename="$(find sq2_ccv_description)/urdf/base/lidar_pillar.urdf.xacro"/>
   <xacro:include filename="$(find sq2_ccv_description)/urdf/sensors/wide_fov_3d_lidar.urdf.xacro"/>
   <xacro:include filename="$(find sq2_ccv_description)/urdf/sensors/camera.urdf.xacro"/>
-  <xacro:include filename="$(find sq2_ccv_description)/urdf/bumper/bumper.urdf.xacro"/>
 
   <!-- Link & Joint -->
   <link name="base_footprint"/>
