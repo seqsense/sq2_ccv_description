@@ -21,7 +21,7 @@
   <include file="$(find sq2_ccv_description)/launch/control.launch"/>
 
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-    args="-urdf -x 0 -y 0 -z 0.5 -model sq2_ccv -param robot_description"/>
+    args="-urdf -x 0 -y -5 -z 0.8 -model sq2_ccv -param robot_description"/>
 
   <node pkg="rostopic" type="rostopic" name="init_roll" args="pub -1 /sq2_ccv/battery_box_joint/command std_msgs/Float64 'data: 0.0'"/>
   <node pkg="rostopic" type="rostopic" name="init_left_steering" args="pub -1 /sq2_ccv/left_steering/command std_msgs/Float64 'data: 0.0'"/>
